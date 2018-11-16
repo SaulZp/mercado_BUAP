@@ -20,3 +20,16 @@ p{
 
 	text-align: center;
 }
+
+.perfil{
+	position: relative;
+	left: 500px;
+	width: 180px;
+	height: 180px;
+}
+
+h3{
+	position: relative;
+	top: 50px;
+	text-align: center;
+}
