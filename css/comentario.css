@@ -1,0 +1,22 @@
+textarea{
+	position: relative;
+	top: 80px;
+	left: 350px;
+	width: 600px;
+	border-radius: 8px;
+}
+
+.agregar{
+	position: relative;
+	top: 130px;
+	left: -20px;
+	background-color: #2E8BBF;
+	border-radius: 8px;
+	color: white;
+	height: 50px;
+}
+
+p{
+
+	text-align: center;
+}

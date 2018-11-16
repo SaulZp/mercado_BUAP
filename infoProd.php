@@ -8,8 +8,9 @@ include './library/consulSQL.php';
 <head>
     <title>Productos</title>
     <?php include './inc/link.php'; ?>
+    <link rel="stylesheet" type="text/css" href="css/comentario.css">
 </head>
-<body id="container-page-product">
+<body id="containeriner-page-product">
     <?php include './inc/navbar.php'; ?>
     <section id="infoproduct">
         <div class="container">
@@ -19,6 +20,7 @@ include './library/consulSQL.php';
                 </div>-->
                 <?php 
                     $CodigoProducto=$_GET['CodigoProd'];
+                    $code = $_GET['CodigoProd'];
                     $productoinfo=  ejecutarSQL::consultar("select * from producto where CodigoProd='".$CodigoProducto."'");
                     while($fila=mysql_fetch_array($productoinfo)){
                         echo '
@@ -42,10 +44,33 @@ include './library/consulSQL.php';
                             </div>
                         ';
                     }
+
+
+                    echo "<br><br>";
+                    echo "<h3>Comentarios</h3>";
+                    $resultado = ejecutarSQL::consultar("SELECT * FROM comentarios WHERE CodigoProducto='".$CodigoProducto."'");
+                    while ($renglon=mysql_fetch_array($resultado)) {
+                        echo"<hr><p>".$renglon[1]."</p> ";
+                    }
+
+                    if(isset($_POST["comentario"])){
+                        $comentario = $_POST["comentario"];
+                        consultasSQL::InsertSQL("comentarios","CodigoProducto, Comentario","'$CodigoProducto', '$comentario'");
+                    }
+
+                    echo '<form action="infoProd.php?CodigoProd='.$CodigoProducto.'" method="POST">
+                        <textarea rows="4" cols="100" placeholder="Comenta aquí.." name="comentario"></textarea>
+                        <button type="submit" class="agregar">Agregar Comentario</button>
+                        </form>';
+
+
                 ?>
             </div>
         </div>
     </section>
-    <?php include './inc/footer.php'; ?>
+
+    <!--COMENTARIOS-->
+    
+   
 </body>
 </html>
