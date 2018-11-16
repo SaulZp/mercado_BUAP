@@ -2,6 +2,8 @@
     session_start();
     include '../library/configServer.php';
     include '../library/consulSQL.php';
+    error_reporting(0);
+
     sleep(2);
     $nombre=$_POST['nombre-login'];
     $clave=$_POST['clave-login'];

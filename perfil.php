@@ -29,7 +29,7 @@ include './library/consulSQL.php';
                                     if($datos=mysql_fetch_array($resultado)){
                                       echo'<img class="perfil" src="./img/person2.png"';
                                       echo "
-                                      <br><H3> Nombre Completo: ".$datos['NombreCompleto']." ".$datos['Apellido']." <br> Direccion: ".$datos['Direccion']."<br>Correo-Electronico: ".$datos['Email'].
+                                      <br><H3 class='datos'> Nombre Completo: ".$datos['NombreCompleto']." ".$datos['Apellido']." <br> Direccion: ".$datos['Direccion']."<br>Correo-Electronico: ".$datos['Email'].
                                       "</H3>";
                                     }
                                 }else{
