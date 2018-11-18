@@ -19,6 +19,9 @@ include './library/consulSQL.php';
                     <h1>Tienda <small class="tittles-pages-logo">B.Shop</small></h1>
                 </div>-->
                 <?php 
+                	session_start();
+                	$usuario = $_SESSION['nombreUser'];
+                	//echo "<script>alert('Usuario:".$usuario."')</script>";
                     $CodigoProducto=$_GET['CodigoProd'];
                     $code = $_GET['CodigoProd'];
                     $productoinfo=  ejecutarSQL::consultar("select * from producto where CodigoProd='".$CodigoProducto."'");
@@ -50,12 +53,20 @@ include './library/consulSQL.php';
                     echo "<h3>Comentarios</h3>";
                     $resultado = ejecutarSQL::consultar("SELECT * FROM comentarios WHERE CodigoProducto='".$CodigoProducto."'");
                     while ($renglon=mysql_fetch_array($resultado)) {
-                        echo"<hr><p>".$renglon[1]."</p> ";
+                        echo"<hr><p>Comentario del usuario:[".$renglon['Id_Cliente']."]: ".$renglon['Comentario']."</p> ";
                     }
 
                     if(isset($_POST["comentario"])){
                         $comentario = $_POST["comentario"];
-                        consultasSQL::InsertSQL("comentarios","CodigoProducto, Comentario","'$CodigoProducto', '$comentario'");
+                        if($usuario==""){
+                        	echo "<script>alert('Inicie sesion para dar su opinion')</script>";
+                        }else{
+                        	echo "<script>alert('Gracias por su comentario')</script>";
+                        	consultasSQL::InsertSQL("comentarios","Id_Cliente,CodigoProducto, Comentario","'$usuario','$CodigoProducto', '$comentario'");
+                        	echo "<script>location.href='product.php'</script>";
+                        }
+                        
+
                     }
 
                     echo '<form action="infoProd.php?CodigoProd='.$CodigoProducto.'" method="POST">

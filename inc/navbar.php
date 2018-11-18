@@ -49,6 +49,7 @@
                                  ';
                             }else if(!$_SESSION['nombreUser']==""){
                                 echo ' 
+                                    <a href="ventas.php" class="table-cell-td">ventas</a>
                                     <a href="pedido.php" class="table-cell-td">Pedido</a>
                                     <a href="perfil.php" class="table-cell-td">Perfil</a>
                                     <a href="#" class="table-cell-td carrito-button-nav all-elements-tooltip" data-toggle="tooltip" data-placement="bottom" title="Ver carrito de compras">

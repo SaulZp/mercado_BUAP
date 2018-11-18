@@ -3,6 +3,7 @@ include '../library/configServer.php';
 include '../library/consulSQL.php';
 
 sleep(3);
+error_reporting(0);
 $nitCliente= '5';
 $nameCliente= $_POST['clien-name'];
 $fullnameCliente= $_POST['clien-fullname'];

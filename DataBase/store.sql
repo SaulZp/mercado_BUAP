@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2018 a las 07:46:19
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Tiempo de generación: 01-04-2016 a las 18:57:38
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `store`
 --
+CREATE DATABASE IF NOT EXISTS `store` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `store`;
 
 -- --------------------------------------------------------
 
@@ -28,8 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `administrador` (
   `Nombre` varchar(30) NOT NULL,
-  `Clave` text NOT NULL,
-  PRIMARY KEY (`Nombre`)
+  `Clave` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -48,8 +49,7 @@ INSERT INTO `administrador` (`Nombre`, `Clave`) VALUES
 CREATE TABLE IF NOT EXISTS `categoria` (
   `CodigoCat` varchar(30) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
-  `Descripcion` text NOT NULL,
-  PRIMARY KEY (`CodigoCat`)
+  `Descripcion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -75,38 +75,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `Clave` text NOT NULL,
   `Direccion` varchar(200) NOT NULL,
   `Telefono` int(20) NOT NULL,
-  `Email` varchar(30) NOT NULL,
-  PRIMARY KEY (`NIT`)
+  `Email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`NIT`, `Nombre`, `NombreCompleto`, `Apellido`, `Clave`, `Direccion`, `Telefono`, `Email`) VALUES
-('5', 'szp', 'Saul', 'Zitlalpopoca', 'e10adc3949ba59abbe56e057f20f883e', 'Puebla', 2147483647, 'dxl@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentarios`
---
-
-CREATE TABLE IF NOT EXISTS `comentarios` (
-  `CodigoProducto` varchar(11) NOT NULL,
-  `Comentario` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `comentarios`
---
-
-INSERT INTO `comentarios` (`CodigoProducto`, `Comentario`) VALUES
-('20140003', 'Es un buen producto y de buena calidad'),
-('20140003', 'Es un buen producto y de buena calidad'),
-('20140003', 'Sony es buena marca y nuca le falla a sus usuarios, el producto fue lo esperado y en buena calidad'),
-('20140002', 'El producto es usado pero esta en buena calidad'),
-('20140001', 'La nexys 3 viene en buen estado y puedes desarrollar muchas aplicaciones en ella');
 
 -- --------------------------------------------------------
 
@@ -117,9 +87,7 @@ INSERT INTO `comentarios` (`CodigoProducto`, `Comentario`) VALUES
 CREATE TABLE IF NOT EXISTS `detalle` (
   `NumPedido` int(20) NOT NULL,
   `CodigoProd` varchar(30) NOT NULL,
-  `CantidadProductos` int(20) NOT NULL,
-  KEY `NumPedido` (`NumPedido`),
-  KEY `CodigoProd` (`CodigoProd`)
+  `CantidadProductos` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -138,21 +106,8 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `Stock` int(20) NOT NULL,
   `NITProveedor` varchar(30) NOT NULL,
   `Imagen` varchar(150) NOT NULL,
-  `Nombre` varchar(30) NOT NULL,
-  PRIMARY KEY (`CodigoProd`),
-  KEY `CodigoCat` (`CodigoCat`),
-  KEY `NITProveedor` (`NITProveedor`),
-  KEY `Agregado` (`Nombre`)
+  `Nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`CodigoProd`, `NombreProd`, `CodigoCat`, `Precio`, `Modelo`, `Marca`, `Stock`, `NITProveedor`, `Imagen`, `Nombre`) VALUES
-('20140001', 'Nexys 3', 'C1', '4500.00', 'Md-3', 'Xilinx', 2, '0001786', 'images.jpg', 'admin'),
-('20140002', 'Protoboard', 'C1', '200.00', 'PB-2', 'Steren', 4, '0001786', 'descarga.jpg', 'admin'),
-('20140003', 'Sony XZ3', 'C3', '4000.00', 'XZ3', 'Sony', 1, '0001781', '450_1000.jpg', 'admin');
 
 -- --------------------------------------------------------
 
@@ -165,8 +120,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `NombreProveedor` varchar(30) NOT NULL,
   `Direccion` varchar(200) NOT NULL,
   `Telefono` int(20) NOT NULL,
-  `PaginaWeb` varchar(30) NOT NULL,
-  PRIMARY KEY (`NITProveedor`)
+  `PaginaWeb` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -176,9 +130,10 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
 INSERT INTO `proveedor` (`NITProveedor`, `NombreProveedor`, `Direccion`, `Telefono`, `PaginaWeb`) VALUES
 ('0001781', 'Sony', 'Minato, Tokio, Japón', 22596485, 'www.sony.com'),
 ('0001782', 'HTC', 'Taoyuan, Taiwán, (República de China)', 25987456, 'www.htc.com'),
+('0001783', 'TCL', 'Huizhou, Guangdong, China', 25698745, 'tcl.com.ar'),
 ('0001785', 'Samsung', 'Samsung Town, Seúl, Corea del Sur', 22504787, 'www.samsung.com'),
-('0001786', 'Xilinx Inc.', 'E.U.', 2147483647, 'www.xilinx.com'),
-('0001787', 'LG', 'Seúl,Corea del Sur', 26589874, 'www.lg.com');
+('0001787', 'LG', 'Seúl,Corea del Sur', 26589874, 'www.lg.com'),
+('0001788', 'Compaq', 'Houston, Texas, EE.UU', 24569875, 'www.compaq.com');
 
 -- --------------------------------------------------------
 
@@ -187,17 +142,69 @@ INSERT INTO `proveedor` (`NITProveedor`, `NombreProveedor`, `Direccion`, `Telefo
 --
 
 CREATE TABLE IF NOT EXISTS `venta` (
-  `NumPedido` int(20) NOT NULL AUTO_INCREMENT,
+`NumPedido` int(20) NOT NULL,
   `Fecha` varchar(150) NOT NULL,
   `NIT` varchar(30) NOT NULL,
   `Descuento` int(20) NOT NULL,
   `TotalPagar` decimal(30,2) NOT NULL,
-  `Estado` varchar(150) NOT NULL,
-  PRIMARY KEY (`NumPedido`),
-  KEY `NIT` (`NIT`),
-  KEY `NIT_2` (`NIT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `Estado` varchar(150) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+ ADD PRIMARY KEY (`Nombre`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+ ADD PRIMARY KEY (`CodigoCat`);
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+ ADD PRIMARY KEY (`NIT`);
+
+--
+-- Indices de la tabla `detalle`
+--
+ALTER TABLE `detalle`
+ ADD KEY `NumPedido` (`NumPedido`), ADD KEY `CodigoProd` (`CodigoProd`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+ ADD PRIMARY KEY (`CodigoProd`), ADD KEY `CodigoCat` (`CodigoCat`), ADD KEY `NITProveedor` (`NITProveedor`), ADD KEY `Agregado` (`Nombre`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+ ADD PRIMARY KEY (`NITProveedor`);
+
+--
+-- Indices de la tabla `venta`
+--
+ALTER TABLE `venta`
+ ADD PRIMARY KEY (`NumPedido`), ADD KEY `NIT` (`NIT`), ADD KEY `NIT_2` (`NIT`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+MODIFY `NumPedido` int(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
@@ -206,22 +213,22 @@ CREATE TABLE IF NOT EXISTS `venta` (
 -- Filtros para la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  ADD CONSTRAINT `detalle_ibfk_8` FOREIGN KEY (`CodigoProd`) REFERENCES `producto` (`CodigoProd`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `detalle_ibfk_9` FOREIGN KEY (`NumPedido`) REFERENCES `venta` (`NumPedido`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `detalle_ibfk_8` FOREIGN KEY (`CodigoProd`) REFERENCES `producto` (`CodigoProd`) ON UPDATE CASCADE,
+ADD CONSTRAINT `detalle_ibfk_9` FOREIGN KEY (`NumPedido`) REFERENCES `venta` (`NumPedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_7` FOREIGN KEY (`CodigoCat`) REFERENCES `categoria` (`CodigoCat`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_8` FOREIGN KEY (`NITProveedor`) REFERENCES `proveedor` (`NITProveedor`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_9` FOREIGN KEY (`Nombre`) REFERENCES `administrador` (`Nombre`);
+ADD CONSTRAINT `producto_ibfk_7` FOREIGN KEY (`CodigoCat`) REFERENCES `categoria` (`CodigoCat`) ON UPDATE CASCADE,
+ADD CONSTRAINT `producto_ibfk_8` FOREIGN KEY (`NITProveedor`) REFERENCES `proveedor` (`NITProveedor`) ON UPDATE CASCADE,
+ADD CONSTRAINT `producto_ibfk_9` FOREIGN KEY (`Nombre`) REFERENCES `administrador` (`Nombre`);
 
 --
 -- Filtros para la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`NIT`) REFERENCES `cliente` (`NIT`) ON UPDATE CASCADE;
+ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`NIT`) REFERENCES `cliente` (`NIT`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
