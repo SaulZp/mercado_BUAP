@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_PARSE);
+error_reporting(0);
 include '../library/configServer.php';
 include '../library/consulSQL.php';
 session_start();

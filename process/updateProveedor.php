@@ -3,7 +3,7 @@ include '../library/configServer.php';
 include '../library/consulSQL.php';
 
 sleep(5);
-
+error_reporting(0);
 $nitOldProveUp=$_POST['nit-prove-old'];
 $nitProveUp=$_POST['nit-prove'];
 $nameProveUp=$_POST['prove-name'];

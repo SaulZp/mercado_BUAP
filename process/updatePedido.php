@@ -1,7 +1,7 @@
 <?php
 include '../library/configServer.php';
 include '../library/consulSQL.php';
-
+error_reporting(0);
 sleep(5);
 
 $numPediUp=$_POST['num-pedido'];

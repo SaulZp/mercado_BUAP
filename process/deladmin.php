@@ -2,7 +2,7 @@
 session_start();
 include '../library/configServer.php';
 include '../library/consulSQL.php';
-
+error_reporting(0);
 sleep(5);
 $nameAd= $_POST['name-admin'];
 $consA=  ejecutarSQL::consultar("select * from administrador where Nombre='$nameAd'");

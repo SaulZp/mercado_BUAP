@@ -53,7 +53,7 @@ include './library/consulSQL.php';
                     echo "<h3>Comentarios</h3>";
                     $resultado = ejecutarSQL::consultar("SELECT * FROM comentarios WHERE CodigoProducto='".$CodigoProducto."'");
                     while ($renglon=mysql_fetch_array($resultado)) {
-                        echo"<hr><p>Comentario del usuario:[".$renglon['Id_Cliente']."]: ".$renglon['Comentario']."</p> ";
+                        echo"<hr><p>Comentario del usuario[".$renglon['Id_Cliente']."]: ".$renglon['Comentario']."</p> ";
                     }
 
                     if(isset($_POST["comentario"])){

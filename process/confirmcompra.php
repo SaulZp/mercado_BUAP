@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-
+error_reporting(0);
 include '../library/configServer.php';
 include '../library/consulSQL.php';
 $num=$_POST['clien-number'];

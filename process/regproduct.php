@@ -21,6 +21,8 @@
                     <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
         <?php
         session_start();
+        $usuario = $_SESSION['nombreUser'];
+        error_reporting(0);
         include '../library/configServer.php';
         include '../library/consulSQL.php';
         
@@ -31,6 +33,7 @@
         $modelProd= $_POST['prod-model'];
         $marcaProd= $_POST['prod-marca'];
         $stockProd= $_POST['prod-stock'];
+        $stockVendedor = $_POST['vendedor'];
         $codePProd= $_POST['prod-codigoP'];
         $adminProd= $_POST['admin-name'];
 
@@ -39,7 +42,7 @@
             $verificaltotal = mysql_num_rows($verificar);
             if($verificaltotal<=0){
                 if(move_uploaded_file($_FILES['img']['tmp_name'],"../assets/img-products/".$_FILES['img']['name'])){
-                    if(consultasSQL::InsertSQL("producto", "CodigoProd, NombreProd, CodigoCat, Precio, Modelo, Marca, Stock, NITProveedor, Imagen, Nombre", "'$codeProd','$nameProd','$cateProd','$priceProd', '$modelProd','$marcaProd','$stockProd','$codePProd','".$_FILES['img']['name']."','$adminProd'")){
+                    if(consultasSQL::InsertSQL("producto", "CodigoProd, NombreProd, CodigoCat, Precio, Modelo, Marca, Stock, NITProveedor, Imagen, Nombre,vendedor", "'$codeProd','$nameProd','$cateProd','$priceProd', '$modelProd','$marcaProd','$stockProd','$codePProd','".$_FILES['img']['name']."','$adminProd','$stockVendedor'")){
                        echo '
                             <img src="../assets/img/correctofull.png" class="center-all-contens">
                             <br>

@@ -81,6 +81,10 @@
                                 </select>
                               </div>
                               <div class="form-group">
+                                <label>Usuario del vendedor</label>
+                                <input type="text" class="form-control"  placeholder="Usuario del vendedor" required maxlength="20" name="vendedor">
+                              </div>
+                              <div class="form-group">
                                 <label>Imagen de producto</label>
                                 <input type="file" name="img">
                                 <p class="help-block">Formato de imagenes admitido png, jpg, gif, jpeg</p>

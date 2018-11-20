@@ -2,7 +2,7 @@
 session_start();
 include '../library/configServer.php';
 include '../library/consulSQL.php';
-
+error_reporting(0);
 sleep(5);
 $nitProve= $_POST['nit-prove'];
 $cons=  ejecutarSQL::consultar("select * from proveedor where NITProveedor='$nitProve'");

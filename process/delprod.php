@@ -3,7 +3,7 @@
  include '../library/consulSQL.php';
 
  sleep(4);
- 
+error_reporting(0); 
  $codeProd= $_POST['prod-code'];
  $cons=  ejecutarSQL::consultar("select * from producto where CodigoProd='$codeProd'");
  $totalproductos = mysql_num_rows($cons);

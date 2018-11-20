@@ -2,7 +2,7 @@
 session_start();
 include '../library/configServer.php';
 include '../library/consulSQL.php';
-
+error_reporting(0);
 sleep(5);
 $codeCateg= $_POST['categ-code'];
 $nameCateg= $_POST['categ-name'];
