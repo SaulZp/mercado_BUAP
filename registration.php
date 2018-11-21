@@ -28,7 +28,13 @@
                        <p style="color:#fff;" class="text-center lead">Debera de llenar todos los campos para registrarse</p>
                        <br><br>
                        <form class="form-horizontal FormCatElec" action="process/regclien.php" role="form" method="post" data-form="save">
-                           
+                            <br>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                <input class="form-control all-elements-tooltip" type="text" placeholder="Ingrese su NIT" required name="clien-nit" data-toggle="tooltip" data-placement="top" title="Ingrese su NIT. Máximo 9 caracteres (solamente letras)" pattern="[a-zA-Z]{1,9}" maxlength="9">
+                              </div>
+                            </div>
                             <br>
                             <div class="form-group">
                               <div class="input-group">

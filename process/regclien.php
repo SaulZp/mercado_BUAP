@@ -4,7 +4,7 @@ include '../library/consulSQL.php';
 
 sleep(3);
 error_reporting(0);
-$nitCliente= '';
+$nitCliente= $_POST['clien-nit'];
 $nameCliente= $_POST['clien-name'];
 $fullnameCliente= $_POST['clien-fullname'];
 $apeCliente= $_POST['clien-lastname'];
