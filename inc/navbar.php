@@ -26,11 +26,11 @@
 </section>
 <nav id="navbar-auto-hidden">
         <div class="row hidden-xs"><!-- Menu computadoras y tablets -->
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <figure class="logo-navbar"></figure>
                 <p class="text-navbar tittles-pages-logo">B.Shop</p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-9">
                 <div class="contenedor-tabla pull-right">
                     <div class="contenedor-tr">
                         <a href="index.php" class="table-cell-td">Inicio</a>
@@ -71,6 +71,7 @@
                                  ';
                             }
                         ?>
+                        <a href="preguntas.php" class="table-cell-td">FAQ</a>
                     </div>
                 </div>
             </div>
