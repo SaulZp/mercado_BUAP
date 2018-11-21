@@ -49,8 +49,8 @@
                                  ';
                             }else if(!$_SESSION['nombreUser']==""){
                                 echo ' 
-                                    <a href="ventas.php" class="table-cell-td">ventas</a>
                                     <a href="pedido.php" class="table-cell-td">Pedido</a>
+                                    <a href="historial.php" class="table-cell-td">H.Pedidos</a>
                                     <a href="perfil.php" class="table-cell-td">Perfil</a>
                                     <a href="#" class="table-cell-td carrito-button-nav all-elements-tooltip" data-toggle="tooltip" data-placement="bottom" title="Ver carrito de compras">
                                         <i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
