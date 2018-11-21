@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6 col-md-offset-3 text-center">
         <?php
-        session_start();
-        $usuario = $_SESSION['nombreUser'];
+        //session_start();
+        //$usuario = $_SESSION['nombreUser'];
         error_reporting(0);
         include '../library/configServer.php';
         include '../library/consulSQL.php';

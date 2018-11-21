@@ -3,22 +3,26 @@ session_start();
 error_reporting(0);
 include '../library/configServer.php';
 include '../library/consulSQL.php';
+
 $num=$_POST['clien-number'];
+
 if($num=='notlog'){
    $nameClien=$_POST['clien-name'];
    $passClien=  md5($_POST['clien-pass']); 
+   echo "<script>alert('NOTLOG');</script>";
 }
 if($num=='log'){
    $nameClien=$_POST['clien-name'];
-   $passClien=$_POST['clien-pass']; 
+   $passClien=md5($_POST['clien-pass']);
+
 }
 sleep(3);
-
+echo "<script>alert('name:".$passClien."');</script>";
 $verdata=  ejecutarSQL::consultar("select * from cliente where Clave='".$passClien."' and Nombre='".$nameClien."'");
 $num=  mysql_num_rows($verdata);
 if($num>0){
   if($_SESSION['sumaTotal']>0){
-
+  
 
   $data= mysql_fetch_array($verdata);
   $nitC=$data['NIT'];
